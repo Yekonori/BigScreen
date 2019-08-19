@@ -16,12 +16,13 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('question', 255);
-            $table->unsignedInteger('question_type_id');
+            $table->enum('question_type', ['A', 'B', 'C']);
+            // $table->unsignedInteger('question_type_id');
             $table->string('available_answer', 255)->nullable();
             $table->unsignedInteger('sondage_id');
             $table->timestamps();
 
-            $table->foreign('question_type_id')->references('id')->on('questions_type')->onDelete('CASCADE');
+            // $table->foreign('question_type_id')->references('id')->on('questions_type')->onDelete('CASCADE');
             $table->foreign('sondage_id')->references('id')->on('sondages')->onDelete('CASCADE');
         });
     }
