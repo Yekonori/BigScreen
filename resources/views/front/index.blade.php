@@ -29,6 +29,8 @@
         <p>Aucune question...</p>
 
         @endforelse
+
+        <button type="submit" class="btn btn-primary">Finaliser</button>
     </form>
 
 @endsection
