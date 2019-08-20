@@ -53,8 +53,8 @@ class QuestionsTableSeeder extends Seeder
             "C",
             "A",
             "A",
-            "C",
-            "C",
+            "A",
+            "A",
             "B"
         ];
         $availableAnswerArray = [
@@ -77,8 +77,8 @@ class QuestionsTableSeeder extends Seeder
             "1, 2, 3, 4, 5",
             "Oui, Non",
             "Oui, Non",
-            "1, 2, 3, 4, 5",
-            "1, 2, 3, 4, 5",
+            "Oui, Non",
+            "Oui, Non",
             null
         ];
 

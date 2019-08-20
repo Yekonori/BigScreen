@@ -17,7 +17,6 @@ class CreateResponsesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('question_id');
             $table->string('response', 255);
-            $table->string('available_response', 255)->nullable();
             $table->string('hash_path', 255);
             $table->timestamps();
             
