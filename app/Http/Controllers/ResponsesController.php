@@ -30,12 +30,12 @@ class ResponsesController extends Controller
         }
 
         return redirect('/')->with(
-            'message', 
-            'Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
+            "success", 
+            "Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
             votre investissement, nous vous préparons une application toujours plus
-            facile à utiliser, seul ou en famille.
+            facile à utiliser, seul ou en famille. <br>
             Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
-            cette adresse: http://xxxxxxxx'
+            cette adresse: <br> <a href='".url("/$hash_path")."'/>" . url("/$hash_path") . " </a>"
         );
     }
 }

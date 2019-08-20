@@ -4,9 +4,9 @@
 
     <h1>Merci de répondre à toutes les questions et de valider le formulaire en bas de page.</h1>
 
-    @if(Session::has('message'))
-    <div class="col-md-12 mb-4">
-        <p class="alert alert-success">{{ Session::get('message') }}</p>
+    @if(Session::has('success'))
+    <div class="alert alert-success">
+        {!! session()->get('success') !!}
     </div>
     @endif
 
