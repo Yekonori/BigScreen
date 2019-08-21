@@ -10,6 +10,31 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 </head>
 <body>
+    @if(Request::is('administration/*'))
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 admin-panel">
+                <img src="{{ asset('image/bigscreen_logo.png') }}" alt="logo BigScreen" width=300>
+                <ul>
+                    <li><a href="{{ url('administration/accueil') }}">Accueil</a></li>
+                    <li><a href="{{ url('administration/questionnaire') }}">Questionnaire</a></li>
+                    <li><a href="{{ url('administration/responses') }}">Résponses</a></li>
+                </ul>
+
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+            <div class="col-md-8">
+                @yield('content')
+            </div>
+        </div>
+    </div>
+    @else
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -23,6 +48,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

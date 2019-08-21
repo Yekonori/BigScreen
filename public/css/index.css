@@ -138,6 +138,12 @@ table {
 /********************** MASTER **********************/
 /****************************************************/
 
+.admin-panel {
+    text-align: center;
+
+    background-color: #21C1D8;
+}
+
 .row-content {
     margin-bottom: 2rem;
 }
