@@ -19,7 +19,11 @@
             <p class="question-sentence">{{ $question->question }}</p>
             <div>
                 @if( $question->question_type === "B" )
-                <input type="text" name="answer{{ $question->question_type }}[{{ $question->id }}]" id="answer{{ $question->id }}" class="form-control">
+                    @if( $question->is_email )
+                    <input type="email" name="email[{{ $question->id }}]" id="email" class="form-control">
+                    @else
+                    <input type="text" name="answer{{ $question->question_type }}[{{ $question->id }}]" id="answer{{ $question->id }}" class="form-control">
+                    @endif
                 @else
                     <select name="answer{{ $question->question_type }}[{{ $question->id }}]" id="answer{{$question->id}}" class="form-control">
                         <!-- <option value="">--- Choissisez une valeur ---</option> -->

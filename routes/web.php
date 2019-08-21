@@ -12,5 +12,6 @@
 */
 
 Route::get('/', 'FrontController@index');
+Route::get('/{id}', 'FrontController@answers')->where('id', '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}');
 
 Route::resource('responses', 'ResponsesController');

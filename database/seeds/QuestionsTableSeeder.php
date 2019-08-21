@@ -57,6 +57,7 @@ class QuestionsTableSeeder extends Seeder
             "A",
             "B"
         ];
+        $isEmailArray = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
         $availableAnswerArray = [
             null,
             null,
@@ -99,6 +100,7 @@ class QuestionsTableSeeder extends Seeder
     
                 "question" => $questionsArray[$i],
                 "question_type" => $questionsTypeArray[$i],
+                "is_email" => $isEmailArray[$i],
                 "available_answer" => $availableAnswerArray[$i],
                 "sondage_id" => 1
             ]);

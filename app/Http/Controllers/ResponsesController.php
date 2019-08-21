@@ -13,12 +13,13 @@ class ResponsesController extends Controller
         $hash_path = Str::uuid()->toString();
 
         $this->validate($request, [
+            'email.*'     => 'required|email',
             'answerA.*' => 'required',
             'answerB.*' => 'required|min:1|max:255',
             'answerC.*' => 'required|regex:/[1-5]/'
         ]);
 
-        $responses = array_replace( $request->answerA, $request->answerB, $request->answerC );
+        $responses = array_replace( $request->email, $request->answerA, $request->answerB, $request->answerC );
         ksort($responses);
 
         foreach ($responses as $key => $value) {
