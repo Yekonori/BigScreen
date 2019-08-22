@@ -18,8 +18,6 @@ class FrontController extends Controller
         $questions = Questions::all();
         $responses = Responses::hashPath($hashPath)->pluck('response', 'question_id');
 
-        // dump($responses);
-
         return view('front.answers', ['questions' => $questions, 'responses' => $responses]);
     }
 }

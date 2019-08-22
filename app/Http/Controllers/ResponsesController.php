@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Response;
+use App\Responses;
 
 class ResponsesController extends Controller
 {
@@ -23,7 +23,7 @@ class ResponsesController extends Controller
         ksort($responses);
 
         foreach ($responses as $key => $value) {
-            Response::create([
+            Responses::create([
                 'question_id'   => $key,
                 'response'      => $value,
                 'hash_path'     => $hash_path

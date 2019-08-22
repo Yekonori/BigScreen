@@ -21,6 +21,6 @@ Auth::routes();
 Route::get('administration', 'Auth\LoginController@showLoginForm')->name('administration');
 Route::post('administration/', 'Auth\LoginController@login');
 
-Route::get('administration/accueil', 'FrontController@index')->middleware('auth');
-Route::get('administration/questionnaire', 'FrontController@index')->middleware('auth');
-Route::get('administration/responses', 'FrontController@index')->middleware('auth');
+Route::get('administration/accueil', 'BackController@index')->middleware('auth');
+Route::get('administration/questionnaire', 'BackController@questionnaires')->middleware('auth');
+Route::get('administration/responses', 'BackController@reponses')->middleware('auth');

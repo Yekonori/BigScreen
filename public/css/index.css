@@ -181,3 +181,18 @@ button {
 
     margin-top: 1.5rem;
 }
+
+/****************************************************/
+/*************** QUESTIONNAIRE - BACK ***************/
+/****************************************************/
+
+.admin-questions {
+    padding: 1vh;
+}
+
+.question-row {
+    height: 45px;
+    padding: 1vh 0;
+
+    border: 1px double black;
+}

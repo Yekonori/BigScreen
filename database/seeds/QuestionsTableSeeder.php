@@ -99,6 +99,7 @@ class QuestionsTableSeeder extends Seeder
                  */
     
                 "question" => $questionsArray[$i],
+                "question_number" => $i + 1,
                 "question_type" => $questionsTypeArray[$i],
                 "is_email" => $isEmailArray[$i],
                 "available_answer" => $availableAnswerArray[$i],
