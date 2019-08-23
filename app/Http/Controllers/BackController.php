@@ -14,10 +14,16 @@ class BackController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $labels = Questions::availableAnswers('6')->pluck('available_answer');
+        $datas = array($this->chart('6'), $this->chart('7'), $this->chart('10'));
+        
+        return view('back.index', ['datas' => $datas ]);
+    }
+
+    public function chart(string $questionID) {
+        $labels = Questions::availableAnswers($questionID)->pluck('available_answer');
         $labels = explode(", ", $labels[0]);
 
-        $responses = Responses::all()->where('question_id', '6')->groupBy('response');
+        $responses = Responses::all()->where('question_id', $questionID)->groupBy('response');
         $datas = [];
 
         foreach ($labels as $key => $value) {
@@ -27,10 +33,10 @@ class BackController extends Controller
                 $number = $responses[$value]->count();
             }
 
-            array_push( $datas, $number);
+            array_push( $datas, $number );
         }
-        
-        return view('back.index', ['labels' => $labels, 'datas' => $datas ]);
+
+        return array("question_id" => $questionID, "labels" => $labels, "datas" => $datas);
     }
 
     public function questionnaires() {

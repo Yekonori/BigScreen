@@ -18,7 +18,7 @@
                 <ul>
                     <li><a href="{{ url('administration/accueil') }}">Accueil</a></li>
                     <li><a href="{{ url('administration/questionnaire') }}">Questionnaire</a></li>
-                    <li><a href="{{ url('administration/responses') }}">Résponses</a></li>
+                    <li><a href="{{ url('administration/responses') }}">Réponses</a></li>
                 </ul>
 
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
