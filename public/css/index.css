@@ -186,6 +186,19 @@ button {
 /****************** ACCUEIL - BACK ******************/
 /****************************************************/
 
+.mt-6 {
+    margin-top: 3vh;
+}
+
+.question {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+
+    height: 50px;
+    margin-top: 1vh;
+}
+
 canvas {
     width: 100%;
 }

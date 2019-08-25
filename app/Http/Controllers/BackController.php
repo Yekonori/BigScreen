@@ -14,17 +14,23 @@ class BackController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $datas = array($this->chart('6'), $this->chart('7'), $this->chart('10'));
+        $pieDatas = array($this->pieChart('6'), $this->pieChart('7'), $this->pieChart('10'));
+
+        $radarDatas = $this->radarChart(array('11', '12', '13', '14', '15'));
         
-        return view('back.index', ['datas' => $datas ]);
+        return view('back.index', ['pieDatas' => $pieDatas, 'radarDatas' => $radarDatas]);
     }
 
-    public function chart(string $questionID) {
+    public function pieChart(string $questionID) {
         $labels = Questions::availableAnswers($questionID)->pluck('available_answer');
         $labels = explode(", ", $labels[0]);
 
+        $question = Questions::where('id', $questionID)->pluck('question');
+
         $responses = Responses::all()->where('question_id', $questionID)->groupBy('response');
         $datas = [];
+
+        $colors = [];
 
         foreach ($labels as $key => $value) {
             $number = 0;
@@ -34,9 +40,23 @@ class BackController extends Controller
             }
 
             array_push( $datas, $number );
+            array_push( $colors, "#".bin2hex(openssl_random_pseudo_bytes(3)) );
         }
 
-        return array("question_id" => $questionID, "labels" => $labels, "datas" => $datas);
+        return array("question_id" => $questionID, "question" => $question[0], "labels" => $labels, "datas" => $datas, "colors" => $colors);
+    }
+
+    public function radarChart(array $questionsID) {
+
+        $labels = [];
+        $responses = [];
+
+        foreach ($questionsID as $questionID) {
+            array_push($labels, "Question n°" . $questionID);
+            array_push($responses, Responses::all()->where('question_id', $questionID)->avg('response'));
+        }
+
+        return array("labels" => $labels, "datas" => $responses);
     }
 
     public function questionnaires() {
