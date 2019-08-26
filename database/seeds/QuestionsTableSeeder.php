@@ -12,6 +12,9 @@ class QuestionsTableSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * The 20 questions
+         */
         $questionsArray = [
             "Votre adresse mail",
             "Votre âge",
@@ -35,6 +38,9 @@ class QuestionsTableSeeder extends Seeder
             "Aimeriez vous jouer à des jeux exclusifs sur votre Bigscreen ?",
             "Quelle nouvelle fonctionnalité de vos rêve devrait exister sur Bigscreen ?"
         ];
+        /**
+         * The 20 questions question_type
+         */
         $questionsTypeArray = [
             "B",
             "B",
@@ -57,7 +63,13 @@ class QuestionsTableSeeder extends Seeder
             "A",
             "B"
         ];
+        /**
+         * The 20 questions is_email
+         */
         $isEmailArray = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+        /**
+         * The 20 questions available_answers
+         */
         $availableAnswerArray = [
             null,
             null,
@@ -81,21 +93,11 @@ class QuestionsTableSeeder extends Seeder
             null
         ];
 
-        for ($i=0; $i < 20; $i++) { 
-            Questions::create([
-                /**
-                 * $table->increments('id');
-                 * $table->string('question', 255);
-                 * $table->enum('question_type', ['A', 'B', 'C']);
-                 * // $table->unsignedInteger('question_type_id');
-                 * $table->string('available_answer', 255)->nullable();
-                 * $table->unsignedInteger('sondage_id');
-                 * $table->timestamps();
-                 *
-                 * // $table->foreign('question_type_id')->references('id')->on('questions_type')->onDelete('CASCADE');
-                 * $table->foreign('sondage_id')->references('id')->on('sondages')->onDelete('CASCADE');
-                 */
-    
+        /**
+         * Create the 20 questions
+         */
+        for ($i=0; $i < count($questionsArray); $i++) { 
+            Questions::create([    
                 "question" => $questionsArray[$i],
                 "question_number" => $i + 1,
                 "question_type" => $questionsTypeArray[$i],

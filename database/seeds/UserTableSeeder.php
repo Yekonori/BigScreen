@@ -11,6 +11,12 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * Insert inside the `users` table a user where : 
+         *  - name => admin
+         *  - email => admin@admin.fr
+         *  - password => admin
+         */
         DB::table('users')->insert([
             [
                 'name' => 'admin',

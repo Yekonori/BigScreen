@@ -13,6 +13,16 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
+        /**
+         * Table Values : 
+         *  - id => Primary Key
+         *  - question => varchar(255)
+         *  - question_number => integer superior or equal to 0
+         *  - question_type => enum[A, B, C]
+         *  - is_email => boolean
+         *  - available_answer => varchar(255) who can be null
+         *  - sondage_id => Foreign Key
+         */
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('question', 255);
@@ -23,7 +33,6 @@ class CreateQuestionsTable extends Migration
             $table->unsignedInteger('sondage_id');
             $table->timestamps();
 
-            // $table->foreign('question_type_id')->references('id')->on('questions_type')->onDelete('CASCADE');
             $table->foreign('sondage_id')->references('id')->on('sondages')->onDelete('CASCADE');
         });
     }

@@ -13,6 +13,11 @@ class CreateSondagesTable extends Migration
      */
     public function up()
     {
+        /**
+         * Table Values : 
+         *  - id => Primary Key
+         *  - name => varchar(255)
+         */
         Schema::create('sondages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255);

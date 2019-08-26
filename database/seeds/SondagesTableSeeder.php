@@ -11,6 +11,9 @@ class SondagesTableSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * Create 1 Sondage with the Factory value
+         */
         factory(App\Sondages::class, 1)->create();
     }
 }

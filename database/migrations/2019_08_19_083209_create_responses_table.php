@@ -13,6 +13,13 @@ class CreateResponsesTable extends Migration
      */
     public function up()
     {
+        /**
+         * Table Values : 
+         *  - id => Primary Key
+         *  - question_id => Foreign Key
+         *  - response => varchar(255)
+         *  - hash_path => varchar(255)
+         */
         Schema::create('responses', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('question_id');

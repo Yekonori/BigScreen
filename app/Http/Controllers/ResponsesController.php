@@ -10,8 +10,17 @@ class ResponsesController extends Controller
 {
     public function store(Request $request) {
 
+        /**
+         * Create a unique user id to obtain the `hash_path` value
+         */
         $hash_path = Str::uuid()->toString();
 
+        /**
+         * Validator of all questions : 
+         *  - Email questions => need to be an email
+         *  - Type B questions => need to be a string with a number of characters min 1 and max 255
+         *  - Type C questions => need to be 1, 2, 3, 4 or 5
+         */
         $this->validate($request, [
             'email.*'     => 'required|email',
             'answerA.*' => 'required',
@@ -19,9 +28,17 @@ class ResponsesController extends Controller
             'answerC.*' => 'required|regex:/[1-5]/'
         ]);
 
+        /**
+         * Store all of the answers inside an array ($responses)
+         * Sort this array by the key value ; here the key value is the id of the question
+         */
         $responses = array_replace( $request->email, $request->answerA, $request->answerB, $request->answerC );
         ksort($responses);
 
+        /**
+         * Foreach value inside $responses : 
+         *  - Create a responses with the good association of key/value
+         */
         foreach ($responses as $key => $value) {
             Responses::create([
                 'question_id'   => $key,
@@ -30,6 +47,11 @@ class ResponsesController extends Controller
             ]);
         }
 
+        /**
+         * Redirect to the `/` route page
+         * 
+         * Generate a success message with the link to the answers
+         */
         return redirect('/')->with(
             "success", 
             "Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
